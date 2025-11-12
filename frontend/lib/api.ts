@@ -93,6 +93,43 @@ export const assemblyApi = {
   },
 };
 
+// Evidence API
+export const evidenceApi = {
+  generatePreview: async (formData: FormData) => {
+    const response = await apiClient.post("/api/evidence/generate-preview", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      responseType: "blob",
+    });
+    return response.data;
+  },
+  
+  save: async (formData: FormData) => {
+    const response = await apiClient.post("/api/evidence/save", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return response.data;
+  },
+  
+  list: async (applicationId: string) => {
+    const response = await apiClient.get(`/api/evidence/list?applicationId=${applicationId}`);
+    return response.data;
+  },
+  
+  get: async (evidenceId: string) => {
+    const response = await apiClient.get(`/api/evidence/${evidenceId}`);
+    return response.data;
+  },
+  
+  delete: async (evidenceId: string) => {
+    const response = await apiClient.delete(`/api/evidence/${evidenceId}`);
+    return response.data;
+  },
+};
+
 // Export API (to be implemented)
 export const exportApi = {
   qualityCheck: async (applicationId: string) => {

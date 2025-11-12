@@ -217,9 +217,12 @@ export default function ResultsPage() {
         <Link
           href="/dashboard/stage2"
           onClick={() => {
-            // Store achievements in sessionStorage for Stage 2
+            // Store achievements and full recommendation for Stage 2
             if (recommendation?.questionnaireAnswers?.achievements) {
               sessionStorage.setItem("userAchievements", JSON.stringify(recommendation.questionnaireAnswers.achievements));
+            }
+            if (recommendation) {
+              sessionStorage.setItem("recommendationData", JSON.stringify(recommendation));
             }
           }}
           className="flex-1 bg-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-colors text-center"

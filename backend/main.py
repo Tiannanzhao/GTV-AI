@@ -30,12 +30,13 @@ async def health_check():
     return {"status": "healthy"}
 
 # Import routers
-from app.api import criteria, documents, classification, achievements
+from app.api import criteria, documents, classification, achievements, evidence
 
 app.include_router(criteria.router, prefix="/api/criteria", tags=["criteria"])
 app.include_router(achievements.router, prefix="/api/achievements", tags=["achievements"])
 app.include_router(documents.router, prefix="/api/documents", tags=["documents"])
 app.include_router(classification.router, prefix="/api/classification", tags=["classification"])
+app.include_router(evidence.router, prefix="/api/evidence", tags=["evidence"])
 
 # Additional routers will be added as they are created
 # from app.api import auth, documents, classification, assembly, export
